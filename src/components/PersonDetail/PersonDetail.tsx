@@ -9,7 +9,7 @@ const PersonDetail = () => {
   const navigate = useNavigate();
 
   const [person, setPerson] = useState<Person>();
-  const [planet, setPlanet] = useState<any>();
+  const [planetName, setPlanetName] = useState<string>();
   const [error, setError] = useState<string | null>(null);
 
   const { id } = useParams<{ id: string }>();
@@ -26,7 +26,7 @@ const PersonDetail = () => {
     if (person?.homeworld) {
       getPlanetById(extractId(person.homeworld))
         .then((response) => {
-          setPlanet(response);
+          setPlanetName(response.name);
         })
         .catch((err) => setError(err));
     }
@@ -73,7 +73,7 @@ const PersonDetail = () => {
         </CardRow>
         <CardRow>
           <CardLabel>Planet:</CardLabel>
-          <CardValue>{planet?.name}</CardValue>
+          <CardValue>{planetName}</CardValue>
         </CardRow>
       </Card>
       <ButtonRow>
