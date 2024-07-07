@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+# Star Wars
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+View a list of star wars characters and access information about them.
+To search for a character, type their name in the search bar.
+Click on the arrows in the bottom of the page to change the apge.
+Click on a character's name to access more information.
 
 ## Available Scripts
 
