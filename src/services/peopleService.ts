@@ -1,11 +1,5 @@
 import axios from 'axios';
 
-export const actionTypes = {
-  SET_USERS: "SET_USERS",
-  GET_USER: "GET_USER",
-  LOG_IN: "LOG_IN",
-};
-
 export const getPeople = (page: number, cb?: (res) => void) => {
   return axios
     .get(`https://swapi.dev/api/people?page=${page}`)
