@@ -17,7 +17,7 @@ export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 40px;
-  background-color: ${COLORS.yellow};
+  background-color: ${COLORS.lightBlue};
   @media (max-width: 768px) {
     padding: 20px;
   }
@@ -30,7 +30,7 @@ export const UserRow = styled.div`
   flex-direction: row;
   width: 50%;
   margin: 5px auto;
-  background-color: ${COLORS.peach};
+  background-color: ${COLORS.blue};
   align-items: center;
   border: 1px solid ${COLORS.black};
 `;
@@ -52,7 +52,7 @@ export const BlackText = styled.text`
 export const Button = styled.button`
   border: 1px solid ${COLORS.black};
   color: ${COLORS.black};
-  background-color: ${COLORS.green};
+  background-color: ${COLORS.azure};
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -64,16 +64,15 @@ export const Button = styled.button`
     padding: 6px 12px;
   }
   &:hover {
-    background-color: ${COLORS.peach};
+    background-color: ${COLORS.blue};
   }
 `;
 
 export const PageButton = styled(Button)<{ disabled: boolean }>`
-  background-color: ${(p: IStyledProps) =>
-    p.disabled ? "${COLORS.green}" : "${COLORS.pink}"};
+  background-color: "${COLORS.blue}";
   align-items: center;
   &:hover {
-    background-color: ${COLORS.pink};
+    background-color: ${COLORS.darkBlue};
   }
 `;
 export const Input = styled.input`

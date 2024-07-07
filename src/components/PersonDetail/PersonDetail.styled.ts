@@ -11,7 +11,7 @@ export const MainWrapper = styled.div`
   height: 100%;
   flex-direction: column;
   padding: 20px;
-  background-color: ${COLORS.yellow};
+  background-color: ${COLORS.lightBlue};
   align-items: center;
   @media (max-width: 768px) {
     padding: 0;
@@ -33,7 +33,7 @@ export const Button = styled.button`
   border: 1px solid ${COLORS.black};
   color: ${COLORS.black};
   border-radius: 10px;
-  background-color: ${COLORS.green};
+  background-color: ${COLORS.azure};
   padding: 15px 30px;
   width: 100px;
   margin: 10px auto;
@@ -41,11 +41,11 @@ export const Button = styled.button`
   box-shadow: 0 2px 3px 0;
   &:hover,
   &:focus {
-    background-color: ${COLORS.pink};
+    background-color: ${COLORS.darkBlue};
   }
 `;
 export const Card = styled.div`
-  background-color: ${COLORS.peach};
+  background-color: ${COLORS.blue};
   border-radius: 8px;
   box-shadow: 0 2px 3px 0;
   padding: 16px;
