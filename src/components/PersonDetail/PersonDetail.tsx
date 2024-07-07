@@ -9,7 +9,7 @@ const PersonDetail = () => {
   const navigate = useNavigate();
 
   const [person, setPerson] = useState<Person>();
-  const [planet, setPlanet] = useState<any>();
+  const [planet, setPlanet] = useState<string>();
   const [error, setError] = useState<string | null>(null);
 
   const { id } = useParams<{ id: string }>();
@@ -26,7 +26,7 @@ const PersonDetail = () => {
     if (person?.homeworld) {
       getPlanetById(extractId(person.homeworld))
         .then((response) => {
-          setPlanet(response);
+          setPlanet(response.name);
         })
         .catch((err) => setError(err));
     }
