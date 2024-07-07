@@ -1,24 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { getPersonById } from '../../services/peopleService.ts';
-import { Person } from '../../types.ts';
+import { getPersonById, getPlanetById } from '../../services/peopleService.ts';
+import { extractId, Person } from '../../utils.ts';
 import { Button, ButtonRow, Card, CardLabel, CardRow, CardTitle, CardValue, MainWrapper } from './PersonDetail.styled.ts';
 
 const PersonDetail = () => {
   const navigate = useNavigate();
 
   const [person, setPerson] = useState<Person>();
+  const [planet, setPlanet] = useState<any>();
   const [error, setError] = useState<string | null>(null);
-  const { url } = useParams<{ url: string }>();
+
+  const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
-    getPersonById(decodeURIComponent(url!))
+    getPersonById(id!)
       .then((response) => {
         setPerson(response);
       })
       .catch((err) => setError(err));
-  }, [url]);
+  }, [id]);
+
+  useEffect(() => {
+    if (person?.homeworld) {
+      getPlanetById(extractId(person.homeworld))
+        .then((response) => {
+          setPlanet(response);
+        })
+        .catch((err) => setError(err));
+    }
+  }, [id, person?.homeworld]);
 
   if (error) {
     return <div>{error}</div>;
@@ -26,6 +38,7 @@ const PersonDetail = () => {
   if (!person) {
     return <div>* * * Loading * * *</div>;
   }
+
   return (
     <MainWrapper>
       <Card>
@@ -57,6 +70,10 @@ const PersonDetail = () => {
         <CardRow>
           <CardLabel>Gender:</CardLabel>
           <CardValue>{person.gender}</CardValue>
+        </CardRow>
+        <CardRow>
+          <CardLabel>Planet:</CardLabel>
+          <CardValue>{planet?.name}</CardValue>
         </CardRow>
       </Card>
       <ButtonRow>

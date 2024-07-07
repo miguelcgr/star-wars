@@ -17,3 +17,8 @@ export interface Person {
   url: string;
   vehicles: string[];
 }
+
+export const extractId = (url: string) => {
+  const urlParts = url.split("/");
+  return urlParts[urlParts.length - 2];
+};

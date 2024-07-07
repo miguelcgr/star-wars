@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { getPeople } from '../../services/peopleService.ts';
-import { Person } from '../../types.ts';
+import { extractId, Person } from '../../utils.ts';
 import { BlackText, ButtonsRow, Input, MainWrapper, PageButton, UserRow } from './Main.styled.ts';
 
 const Main: React.FC = () => {
@@ -38,6 +38,7 @@ const Main: React.FC = () => {
   if (!filteredPeople) {
     return <div>* * * Loading * * *</div>;
   }
+
   return (
     <MainWrapper>
       <Input onChange={(e) => setSearchItem(e.target.value)} />
@@ -46,13 +47,7 @@ const Main: React.FC = () => {
           <UserRow
             key={person?.name}
             onClick={() => {
-              navigate(
-                `/person/${encodeURIComponent(person.url)}`,
-
-                {
-                  state: { persona: person },
-                }
-              );
+              navigate(`/person/${extractId(person.url)}`);
             }}
           >
             <BlackText>{person.name}</BlackText>
